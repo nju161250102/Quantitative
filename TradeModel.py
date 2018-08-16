@@ -106,7 +106,10 @@ class TradeModel(object):
         for name, transaction_dict in transaction_dicts.items():
             date_list = transaction_dict.keys()
             date_list.sort()
+            # 初始化持仓数据
             rate_list = []
+            self._money = self._init_money
+            self._stocks = []
             for date in date_list:
                 if len(transaction_dict[date]) != 0:
                     self._transact(date, transaction_dict[date])
