@@ -108,7 +108,8 @@ class TradeModel(object):
             date_list.sort()
             rate_list = []
             for date in date_list:
-                self._transact(date, transaction_dict[date])
+                if len(transaction_dict[date]) != 0:
+                    self._transact(date, transaction_dict[date])
                 # 以收盘价计算收益率
                 money = self._money
                 for stock in self._stocks:
